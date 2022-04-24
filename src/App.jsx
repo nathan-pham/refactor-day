@@ -3,13 +3,16 @@ import reload from "./assets/reload.svg";
 
 const API_URL = "https://api.github.com/users/nathan-pham/repos";
 
+// generate a random number given length of array
 const generateRandom = (repos) => Math.floor(Math.random() * repos.length);
 
+// App component
 const App = () => {
     const [repos, setRepos] = useState([]);
     const [random, setRandom] = useState(0);
 
     useEffect(() => {
+        // get repositories from API_URL
         const fetchRepos = async () => {
             const res = await fetch(API_URL).then((res) => res.json());
             setRandom(generateRandom(res));
